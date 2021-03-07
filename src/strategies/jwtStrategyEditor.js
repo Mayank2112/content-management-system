@@ -11,7 +11,7 @@ const opts = {
 };
 
 const jwtStrategy = new Strategy(opts, (jwtPayload, done) => {
-  User.findById(jwtPayload.id, (err, user) => {
+  User.findOne({ id: jwtPayload.id, role: 'editor' }, (err, user) => {
     if (err) {
       return done(err, false);
     }

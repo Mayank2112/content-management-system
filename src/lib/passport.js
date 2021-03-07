@@ -1,5 +1,5 @@
 import passport from 'passport';
-import jwtStrategy from '../strategies/jwtDefaultStrategy';
+import jwtStrategy from '../strategies';
 
 /**
  * Intialize passport and define strategies
@@ -9,7 +9,13 @@ const passportSetup = app => {
   app.use(passport.initialize());
   app.use(passport.session());
 
-  passport.use(jwtStrategy);
+  passport.serializeUser((user, done) => {
+    done(null, user);
+  });
+
+  passport.use('jwt-author', jwtStrategy.author);
+  passport.use('jwt-editor', jwtStrategy.editor);
+  passport.use('jwt-publisher', jwtStrategy.publisher);
 };
 
 export default {
