@@ -1,0 +1,7 @@
+{
+  "server": {
+    "port": 3000,
+    "jwtTime": 600000,
+    "jwtSecret": "this-is-a-secret-key"
+  }
+}
