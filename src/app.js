@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import startConnection from './models';
 import routes from './routes';
 
 const env = process.env.NODE_ENV || 'development';
@@ -14,6 +15,9 @@ app.use(cors());
 // setup for parsing data
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
+// connect database
+startConnection();
 
 app.use('/', routes);
 
