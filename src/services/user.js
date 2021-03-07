@@ -7,7 +7,7 @@ import User from '../models/user';
  * @param {Object} userDetails - containing all required fields
  * @param {String} userStatus - active/inactive user
  */
-const addUser = async userDetails => {
+const add = async userDetails => {
   const userObject = {
     name: userDetails.name,
     email: userDetails.email,
@@ -22,7 +22,6 @@ const addUser = async userDetails => {
     await user.save();
     return user;
   } catch (err) {
-    console.log(err.message);
     throw new Error(`Unable to register user due to ${err.message}`);
   }
 };
@@ -31,9 +30,9 @@ const addUser = async userDetails => {
  * Fetch user with matching email and return user object
  * @param {String} email
  */
-const findUserWithEmail = email => User.findOne({ email });
+const findWithEmail = email => User.findOne({ email });
 
 export default {
-  addUser,
-  findUserWithEmail
+  add,
+  findWithEmail
 };
