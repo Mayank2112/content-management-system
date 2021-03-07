@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import startConnection from './models';
+import passportLibrary from './lib/passport';
 import routes from './routes';
 
 const env = process.env.NODE_ENV || 'development';
@@ -15,6 +16,9 @@ app.use(cors());
 // setup for parsing data
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
+// setup for passport module
+passportLibrary.passportSetup(app);
 
 // connect database
 startConnection();
