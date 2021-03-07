@@ -1,6 +1,6 @@
 import { buildSchema } from 'graphql';
 
-const userSchema = buildSchema(`
+const author = buildSchema(`
   type user {
     name: String
     email: String
@@ -19,4 +19,4 @@ const userSchema = buildSchema(`
   }
 `);
 
-export default userSchema;
+export default author;
